@@ -1,0 +1,83 @@
+﻿@page "/AddAdult"
+@using LoginExample.Data.Models
+@using Microsoft.AspNetCore.Components
+@attribute [Authorize(Policy = "MustBeAdmin")]
+
+@inject IAdult adultJSONData
+@inject NavigationManager NavigationManager
+
+<h3>AddAdult</h3>
+<p> Please fill the content to add adults</p>
+
+<ChildContent Context="form">
+   
+
+    <EditForm Model="@newAdult" OnValidSubmit="@AddNewAdult">
+        <DataAnnotationsValidator/>
+        <ValidationSummary/>
+
+        <div class="form-group">
+            First Name:<br/>
+            <InputTextArea rows="1" @bind-Value="newAdult.FirstName"/>
+        </div>
+        <div class="form-group">
+            Last Name:<br/>
+            <InputTextArea rows="1" @bind-Value="newAdult.LastName"/>
+        </div>
+        <div class="form-group">
+            Hair Color:<br/>
+            <InputTextArea rows="1" @bind-Value="newAdult.HairColor"/>
+        </div>
+        <div class="form-group">
+            Eye Color:<br/>
+            <InputTextArea rows="1" @bind-Value="newAdult.EyeColor"/>
+        </div>
+        <div class="form-group">
+            Age:<br/>
+            <InputNumber rows="1" @bind-Value="newAdult.Age"/>
+        </div>
+        <div class="form-group">
+            Height:<br/>
+            <InputNumber rows="1" @bind-Value="newAdult.Height"/>
+        </div>
+        <div class="form-group">
+            Weight:<br/>
+            <InputNumber rows="1" @bind-Value="newAdult.Weight"/>
+        </div>
+        <div class="form-group">
+            Sex:<br/>
+            <InputTextArea rows="1" @bind-Value="newAdult.Sex"/>
+        </div>
+        <div class="form-group">
+            JobTitle:<br/>
+            <InputTextArea rows="1" @bind-Value="jobtitle"/>
+        </div>
+        <div class="form-group">
+            Salary:<br/>
+            <InputNumber rows="1" @bind-Value="salary"/>
+        </div>
+
+        <p class="actions">
+            <button class="btn btn-outline-dark" type="submit">Create</button>
+        </p>
+    </EditForm>
+</ChildContent>
+
+@code {
+
+    private string jobtitle;
+    private int salary;
+
+    private readonly Adult newAdult = new ();
+
+    private void AddNewAdult()
+    {
+        newAdult.job = new Job() {JobTitle = jobtitle, Salary = salary};
+        
+        adultJSONData.AddAdult(newAdult);
+        NavigationManager.NavigateTo("/List");
+        
+    }
+
+    
+}
