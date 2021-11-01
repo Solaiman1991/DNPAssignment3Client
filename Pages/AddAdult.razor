@@ -1,9 +1,10 @@
 ﻿@page "/AddAdult"
-@using LoginExample.Data.Models
 @using Microsoft.AspNetCore.Components
+@using Assingment1.Data.Services
+@using Assingment1.Data.Models
 @attribute [Authorize(Policy = "MustBeAdmin")]
 
-@inject IAdult adultJSONData
+@inject IAdultService AdultService
 @inject NavigationManager NavigationManager
 
 <h3>AddAdult</h3>
@@ -54,7 +55,7 @@
         </div>
         <div class="form-group">
             Salary:<br/>
-            <InputNumber rows="1" @bind-Value="salary"/>
+            <InputNumber default="null" rows="1" @bind-Value="salary"/>
         </div>
 
         <p class="actions">
@@ -66,15 +67,17 @@
 @code {
 
     private string jobtitle;
-    private int salary;
+    private int? salary;
 
     private readonly Adult newAdult = new ();
 
-    private void AddNewAdult()
+    private async void  AddNewAdult()
     {
-        newAdult.job = new Job() {JobTitle = jobtitle, Salary = salary};
-        
-        adultJSONData.AddAdult(newAdult);
+        if (jobtitle !=null || salary != null)
+        {
+            newAdult.job = new Job() {JobTitle = jobtitle, Salary = salary};
+        }
+        await AdultService.AddAdult(newAdult);
         NavigationManager.NavigateTo("/List");
         
     }

@@ -1,5 +1,5 @@
 ﻿
-namespace LoginExample.Data.Models
+namespace Assingment1.Data.Models
 {
     public interface IJob
     {

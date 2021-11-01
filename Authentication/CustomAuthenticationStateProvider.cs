@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Text.Json;
 using System.Threading.Tasks;
-using LoginExample.Data.Models;
+using Assingment1.Data.Models;
+using Assingment1.Data.Services;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.JSInterop;
 
-namespace LoginExample.Authentication {
+namespace Assingment1.Authentication {
 public class CustomAuthenticationStateProvider : AuthenticationStateProvider {
     private readonly IJSRuntime jsRuntime;
     private readonly IUserService userService;

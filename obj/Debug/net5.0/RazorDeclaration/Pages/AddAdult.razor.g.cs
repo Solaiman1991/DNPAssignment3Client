@@ -12,91 +12,98 @@ namespace LoginExample.Pages
     using System.Linq;
     using System.Threading.Tasks;
 #nullable restore
-#line 1 "C:\Users\Solaiman\Desktop\DNPExamples-master\DNPExamples-master\Blazor\LoginExample\_Imports.razor"
+#line 1 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\Solaiman\Desktop\DNPExamples-master\DNPExamples-master\Blazor\LoginExample\_Imports.razor"
+#line 2 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\Solaiman\Desktop\DNPExamples-master\DNPExamples-master\Blazor\LoginExample\_Imports.razor"
+#line 3 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\Solaiman\Desktop\DNPExamples-master\DNPExamples-master\Blazor\LoginExample\_Imports.razor"
+#line 4 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\Solaiman\Desktop\DNPExamples-master\DNPExamples-master\Blazor\LoginExample\_Imports.razor"
+#line 5 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\Solaiman\Desktop\DNPExamples-master\DNPExamples-master\Blazor\LoginExample\_Imports.razor"
+#line 6 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\Solaiman\Desktop\DNPExamples-master\DNPExamples-master\Blazor\LoginExample\_Imports.razor"
+#line 7 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\Solaiman\Desktop\DNPExamples-master\DNPExamples-master\Blazor\LoginExample\_Imports.razor"
+#line 8 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\_Imports.razor"
 using LoginExample;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\Solaiman\Desktop\DNPExamples-master\DNPExamples-master\Blazor\LoginExample\_Imports.razor"
+#line 9 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\_Imports.razor"
 using LoginExample.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\Solaiman\Desktop\DNPExamples-master\DNPExamples-master\Blazor\LoginExample\_Imports.razor"
+#line 10 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\_Imports.razor"
 using Blazored.Typeahead;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\Solaiman\Desktop\DNPExamples-master\DNPExamples-master\Blazor\LoginExample\Pages\AddAdult.razor"
-using LoginExample.Data.Models;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 3 "C:\Users\Solaiman\Desktop\DNPExamples-master\DNPExamples-master\Blazor\LoginExample\Pages\AddAdult.razor"
+#line 2 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\Pages\AddAdult.razor"
 using Microsoft.AspNetCore.Components;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\Solaiman\Desktop\DNPExamples-master\DNPExamples-master\Blazor\LoginExample\Pages\AddAdult.razor"
+#line 3 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\Pages\AddAdult.razor"
+using Assingment1.Data.Services;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\Pages\AddAdult.razor"
+using Assingment1.Data.Models;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\Pages\AddAdult.razor"
            [Authorize(Policy = "MustBeAdmin")]
 
 #line default
@@ -111,19 +118,21 @@ using Microsoft.AspNetCore.Components;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 66 "C:\Users\Solaiman\Desktop\DNPExamples-master\DNPExamples-master\Blazor\LoginExample\Pages\AddAdult.razor"
+#line 67 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\Pages\AddAdult.razor"
        
 
     private string jobtitle;
-    private int salary;
+    private int? salary;
 
     private readonly Adult newAdult = new ();
 
-    private void AddNewAdult()
+    private async void  AddNewAdult()
     {
-        newAdult.job = new Job() {JobTitle = jobtitle, Salary = salary};
-        
-        adultJSONData.AddAdult(newAdult);
+        if (jobtitle !=null || salary != null)
+        {
+            newAdult.job = new Job() {JobTitle = jobtitle, Salary = salary};
+        }
+        await AdultService.AddAdult(newAdult);
         NavigationManager.NavigateTo("/List");
         
     }
@@ -134,7 +143,7 @@ using Microsoft.AspNetCore.Components;
 #line hidden
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IAdult adultJSONData { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IAdultService AdultService { get; set; }
     }
 }
 #pragma warning restore 1591

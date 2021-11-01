@@ -13,84 +13,91 @@ namespace LoginExample.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\Solaiman\Desktop\DNPExamples-master\DNPExamples-master\Blazor\LoginExample\_Imports.razor"
+#line 1 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\Solaiman\Desktop\DNPExamples-master\DNPExamples-master\Blazor\LoginExample\_Imports.razor"
+#line 2 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\Solaiman\Desktop\DNPExamples-master\DNPExamples-master\Blazor\LoginExample\_Imports.razor"
+#line 3 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\Solaiman\Desktop\DNPExamples-master\DNPExamples-master\Blazor\LoginExample\_Imports.razor"
+#line 4 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\Solaiman\Desktop\DNPExamples-master\DNPExamples-master\Blazor\LoginExample\_Imports.razor"
+#line 5 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\Solaiman\Desktop\DNPExamples-master\DNPExamples-master\Blazor\LoginExample\_Imports.razor"
+#line 6 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\Solaiman\Desktop\DNPExamples-master\DNPExamples-master\Blazor\LoginExample\_Imports.razor"
+#line 7 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\Solaiman\Desktop\DNPExamples-master\DNPExamples-master\Blazor\LoginExample\_Imports.razor"
+#line 8 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\_Imports.razor"
 using LoginExample;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\Solaiman\Desktop\DNPExamples-master\DNPExamples-master\Blazor\LoginExample\_Imports.razor"
+#line 9 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\_Imports.razor"
 using LoginExample.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\Solaiman\Desktop\DNPExamples-master\DNPExamples-master\Blazor\LoginExample\_Imports.razor"
+#line 10 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\_Imports.razor"
 using Blazored.Typeahead;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\Solaiman\Desktop\DNPExamples-master\DNPExamples-master\Blazor\LoginExample\Pages\List.razor"
-using LoginExample.Data.Models;
+#line 2 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\Pages\List.razor"
+using Assingment1.Data.Services;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\Solaiman\Desktop\DNPExamples-master\DNPExamples-master\Blazor\LoginExample\Pages\List.razor"
+#line 3 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\Pages\List.razor"
+using Assingment1.Data.Models;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\Pages\List.razor"
            [Authorize(Policy = "SecurityLevel2")]
 
 #line default
@@ -105,22 +112,40 @@ using LoginExample.Data.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 111 "C:\Users\Solaiman\Desktop\DNPExamples-master\DNPExamples-master\Blazor\LoginExample\Pages\List.razor"
+#line 109 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\Pages\List.razor"
        
     private IList<Adult> adultsToShow;
     private IList<Adult> allAdults;
     private int? filterById;
-    private string removeAdult;
+    private string? filterByLastName;
 
 
     protected override async Task OnInitializedAsync()
     {
-        allAdults = AdultJSONData.Getadults();
+        allAdults = await adultService.GetAdults();
         adultsToShow = allAdults;
-        AdultList = AdultJSONData.Getadults();
 
     // når jeg kører denne her metode, så får jeg en exception ?
     // await Task.Run(() => AdultJSONData.RemoveAdult(0));
+    }
+
+    private void FilterByLastName(ChangeEventArgs args)
+    {
+        string errorMessage = "";
+        filterByLastName = null;
+        try
+        {
+            filterByLastName = args.Value.ToString();
+            if (args.Value.Equals(""))
+            {
+                filterByLastName = null;
+            }
+        }
+        catch (Exception e)
+        {
+            errorMessage = e.Message;
+        }
+        ExecuteFilter();
     }
 
     // filter by id box 
@@ -138,16 +163,6 @@ using LoginExample.Data.Models;
         ExecuteFilter();
     }
 
-
-
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 147 "C:\Users\Solaiman\Desktop\DNPExamples-master\DNPExamples-master\Blazor\LoginExample\Pages\List.razor"
-       
-
     private string jobtitle;
     private int salary;
     private string searchText = "";
@@ -157,19 +172,26 @@ using LoginExample.Data.Models;
 
     List<Adult> FilteredAdults => AdultList.Where(adult => adult.FirstName.ToLower().Contains(searchText.ToLower())).ToList();
 
-    private async Task RemoveAdult(int id)
+    private async Task RemoveAdult(Adult adult)
     {
-        Adult adultToRemove = allAdults.First(t => t.Id == id);
-        AdultJSONData.RemoveAdult(id);
-        allAdults.Remove(adultToRemove);
-        adultsToShow.Remove(adultToRemove);
+        await adultService.RemoveAdult(adult);
+        try
+        {
+            allAdults =  await adultService.GetAdults();
+        }
+        catch (Exception e)
+        {
+            allAdults = null;
+        }
+        ExecuteFilter();
     }
+
 
     private void ExecuteFilter()
     {
         adultsToShow = allAdults.Where(t =>
-            (filterById != null && t.Id == filterById || filterById == null)
-            ).ToList();
+            (filterById != null && t.Id == filterById || filterById == null) &&
+            (filterByLastName != null && t.LastName == filterByLastName || filterByLastName == null)).ToList();
     }
 
 
@@ -179,7 +201,7 @@ using LoginExample.Data.Models;
 #line default
 #line hidden
 #nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IAdult AdultJSONData { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IAdultService adultService { get; set; }
     }
 }
 #pragma warning restore 1591

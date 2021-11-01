@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "q6lcFfBkl/iTJsVyJ78pTWPsYf8O7SDRkWmDeXJViS2Qq/ieaZ8K7e77r8KsJTAkV6/cw59HoqQGVKZ9mn0QOA==",
+  "dgSpecHash": "jc5TbdRFwdy2AeB4T5reDBR1V7gErG2wqII1gMLBV12pjyl0YQ9JZsl65TeQ2LEs1sFKW3nRzLZeHe7/ZQvdFg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Solaiman\\Desktop\\DNPExamples-master\\DNPExamples-master\\Blazor\\LoginExample\\LoginExample.csproj",
+  "projectFilePath": "C:\\Users\\Solaiman\\Desktop\\3 Semester\\DNP1\\Afleveringer\\Assignment1\\Assignment1\\Assignment1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Solaiman\\.nuget\\packages\\blazored.localstorage\\4.1.5\\blazored.localstorage.4.1.5.nupkg.sha512",
     "C:\\Users\\Solaiman\\.nuget\\packages\\blazored.typeahead\\4.6.0\\blazored.typeahead.4.6.0.nupkg.sha512",
@@ -18,8 +18,7 @@
     "C:\\Users\\Solaiman\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
     "C:\\Users\\Solaiman\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
     "C:\\Users\\Solaiman\\.nuget\\packages\\microsoft.jsinterop\\5.0.5\\microsoft.jsinterop.5.0.5.nupkg.sha512",
-    "C:\\Users\\Solaiman\\.nuget\\packages\\system.io.pipelines\\5.0.1\\system.io.pipelines.5.0.1.nupkg.sha512",
-    "C:\\Users\\Solaiman\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.9\\microsoft.netcore.app.host.win-x64.5.0.9.nupkg.sha512"
+    "C:\\Users\\Solaiman\\.nuget\\packages\\system.io.pipelines\\5.0.1\\system.io.pipelines.5.0.1.nupkg.sha512"
   ],
   "logs": []
 }

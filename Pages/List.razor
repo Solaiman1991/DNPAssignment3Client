@@ -1,18 +1,16 @@
 ﻿@page "/List"
-@using LoginExample.Data.Models
-@inject IAdult AdultJSONData
+@using Assingment1.Data.Services
+@using Assingment1.Data.Models
+@inject IAdultService adultService
 @attribute [Authorize(Policy = "SecurityLevel2")]
 
 <h3>Adult list</h3>
 <p> A list of all adults </p>
 
 
-<div class="text-center bg-blue-100">
-    <input class="border-4 w-1/3 rounded m-6 p-6 h-8
-               border-blue-300" @bind-value="searchText"@bind-value:event="oninput" placeholder="Search by firstname"/>
-
-    <p class="text-center bg-blue-100">
-        <button class="btn btn-outline-dark" type="submit">Search</button>
+<div id="form-group">
+    <p>
+        Filter by Last Name: <input type="text" @oninput="@((arg) => FilterByLastName(arg))" style="width:50px"/>
     </p>
 </div>
 
@@ -46,7 +44,7 @@ else
         <em>Loading...</em>
     </p>
 }
-@if (!allAdults.Any())
+else if (!allAdults.Any())
 {
     <p>
         <em>No adults in list.</em>
@@ -96,7 +94,7 @@ else
                 }
                 <td>
                     <AuthorizeView Policy="MustBeAdmin">
-                        <a @onclick="@(() => RemoveAdult(item.Id))">
+                        <a @onclick="@(() => RemoveAdult(item))">
                             <i class="btn btn-warning" style="color:blue"/> Delete
                         </a>
                     </AuthorizeView>
@@ -112,17 +110,35 @@ else
     private IList<Adult> adultsToShow;
     private IList<Adult> allAdults;
     private int? filterById;
-    private string removeAdult;
+    private string? filterByLastName;
 
 
     protected override async Task OnInitializedAsync()
     {
-        allAdults = AdultJSONData.Getadults();
+        allAdults = await adultService.GetAdults();
         adultsToShow = allAdults;
-        AdultList = AdultJSONData.Getadults();
 
     // når jeg kører denne her metode, så får jeg en exception ?
     // await Task.Run(() => AdultJSONData.RemoveAdult(0));
+    }
+
+    private void FilterByLastName(ChangeEventArgs args)
+    {
+        string errorMessage = "";
+        filterByLastName = null;
+        try
+        {
+            filterByLastName = args.Value.ToString();
+            if (args.Value.Equals(""))
+            {
+                filterByLastName = null;
+            }
+        }
+        catch (Exception e)
+        {
+            errorMessage = e.Message;
+        }
+        ExecuteFilter();
     }
 
     // filter by id box 
@@ -140,12 +156,6 @@ else
         ExecuteFilter();
     }
 
-
-
-}
-
-@code {
-
     private string jobtitle;
     private int salary;
     private string searchText = "";
@@ -155,19 +165,26 @@ else
 
     List<Adult> FilteredAdults => AdultList.Where(adult => adult.FirstName.ToLower().Contains(searchText.ToLower())).ToList();
 
-    private async Task RemoveAdult(int id)
+    private async Task RemoveAdult(Adult adult)
     {
-        Adult adultToRemove = allAdults.First(t => t.Id == id);
-        AdultJSONData.RemoveAdult(id);
-        allAdults.Remove(adultToRemove);
-        adultsToShow.Remove(adultToRemove);
+        await adultService.RemoveAdult(adult);
+        try
+        {
+            allAdults =  await adultService.GetAdults();
+        }
+        catch (Exception e)
+        {
+            allAdults = null;
+        }
+        ExecuteFilter();
     }
+
 
     private void ExecuteFilter()
     {
         adultsToShow = allAdults.Where(t =>
-            (filterById != null && t.Id == filterById || filterById == null)
-            ).ToList();
+            (filterById != null && t.Id == filterById || filterById == null) &&
+            (filterByLastName != null && t.LastName == filterByLastName || filterByLastName == null)).ToList();
     }
 
 

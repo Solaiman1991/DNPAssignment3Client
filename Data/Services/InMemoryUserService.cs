@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using LoginExample.Data.Models;
+using Assingment1.Data.Models;
 
-namespace LoginExample.Data.Impl {
-public class InMemoryUserService : IUserService {
+namespace Assingment1.Data.Services {
+public class InMemoryUserService : IUserService
+{
     private List<User> users;
 
     public InMemoryUserService() {

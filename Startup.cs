@@ -1,7 +1,6 @@
 using System.Security.Claims;
-using LoginExample.Authentication;
-using LoginExample.Data.Impl;
-using LoginExample.Data.Models;
+using Assingment1.Authentication;
+using Assingment1.Data.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Hosting;
@@ -9,7 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace LoginExample {
+namespace Assingment1 {
 public class Startup {
     public Startup(IConfiguration configuration) {
         Configuration = configuration;
@@ -23,6 +22,9 @@ public class Startup {
         services.AddRazorPages();
         services.AddServerSideBlazor();
         services.AddScoped<IUserService, InMemoryUserService>();
+       services.AddScoped<IAdultService,AdultService>();
+       
+
         
         services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 
@@ -46,7 +48,6 @@ public class Startup {
                     return int.Parse(levelClaim.Value) >= 2;
                 }));
         });
-        services.AddSingleton<IAdult, AdultJSONData > ();
 
     }
 

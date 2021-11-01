@@ -1,6 +1,6 @@
-using LoginExample.Data.Models;
+using Assingment1.Data.Models;
 
-namespace LoginExample.Data.Models {
+namespace Assingment1.Data.Models {
 public class Person :IPerson {
     
     public int Id { get; set; }

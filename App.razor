@@ -1,4 +1,5 @@
-﻿<Router AppAssembly="@typeof(Program).Assembly">
+﻿@using Assingment1
+<Router AppAssembly="@typeof(Program).Assembly">
     <Found Context="routeData">
         <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)"/>
     </Found>
