@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jc5TbdRFwdy2AeB4T5reDBR1V7gErG2wqII1gMLBV12pjyl0YQ9JZsl65TeQ2LEs1sFKW3nRzLZeHe7/ZQvdFg==",
+  "dgSpecHash": "HWrVJHzZ+YemcnH7bXsppRaduNFmjR5qWYOppevlyADJ/HzYI1kolYwXDsjEThbu+QeQwk2LSifBHUMLFdbTwg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Solaiman\\Desktop\\3 Semester\\DNP1\\Afleveringer\\Assignment1\\Assignment1\\Assignment1.csproj",
+  "projectFilePath": "C:\\Users\\Solaiman\\RiderProjects\\DNPAssignment1Client\\Assignment1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Solaiman\\.nuget\\packages\\blazored.localstorage\\4.1.5\\blazored.localstorage.4.1.5.nupkg.sha512",
     "C:\\Users\\Solaiman\\.nuget\\packages\\blazored.typeahead\\4.6.0\\blazored.typeahead.4.6.0.nupkg.sha512",

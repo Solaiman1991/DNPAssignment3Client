@@ -12,98 +12,98 @@ namespace LoginExample.Pages
     using System.Linq;
     using System.Threading.Tasks;
 #nullable restore
-#line 1 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\_Imports.razor"
+#line 1 "C:\Users\Solaiman\RiderProjects\DNPAssignment1Client\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\_Imports.razor"
+#line 2 "C:\Users\Solaiman\RiderProjects\DNPAssignment1Client\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\_Imports.razor"
+#line 3 "C:\Users\Solaiman\RiderProjects\DNPAssignment1Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\_Imports.razor"
+#line 4 "C:\Users\Solaiman\RiderProjects\DNPAssignment1Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\_Imports.razor"
+#line 5 "C:\Users\Solaiman\RiderProjects\DNPAssignment1Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\_Imports.razor"
+#line 6 "C:\Users\Solaiman\RiderProjects\DNPAssignment1Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\_Imports.razor"
+#line 7 "C:\Users\Solaiman\RiderProjects\DNPAssignment1Client\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\_Imports.razor"
+#line 8 "C:\Users\Solaiman\RiderProjects\DNPAssignment1Client\_Imports.razor"
 using LoginExample;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\_Imports.razor"
+#line 9 "C:\Users\Solaiman\RiderProjects\DNPAssignment1Client\_Imports.razor"
 using LoginExample.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\_Imports.razor"
+#line 10 "C:\Users\Solaiman\RiderProjects\DNPAssignment1Client\_Imports.razor"
 using Blazored.Typeahead;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\Pages\AddAdult.razor"
+#line 2 "C:\Users\Solaiman\RiderProjects\DNPAssignment1Client\Pages\AddAdult.razor"
 using Microsoft.AspNetCore.Components;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\Pages\AddAdult.razor"
+#line 3 "C:\Users\Solaiman\RiderProjects\DNPAssignment1Client\Pages\AddAdult.razor"
 using Assingment1.Data.Services;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\Pages\AddAdult.razor"
+#line 4 "C:\Users\Solaiman\RiderProjects\DNPAssignment1Client\Pages\AddAdult.razor"
 using Assingment1.Data.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\Pages\AddAdult.razor"
+#line 5 "C:\Users\Solaiman\RiderProjects\DNPAssignment1Client\Pages\AddAdult.razor"
            [Authorize(Policy = "MustBeAdmin")]
 
 #line default
@@ -118,7 +118,7 @@ using Assingment1.Data.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 67 "C:\Users\Solaiman\Desktop\3 Semester\DNP1\Afleveringer\Assignment1\Assignment1\Pages\AddAdult.razor"
+#line 67 "C:\Users\Solaiman\RiderProjects\DNPAssignment1Client\Pages\AddAdult.razor"
        
 
     private string jobtitle;

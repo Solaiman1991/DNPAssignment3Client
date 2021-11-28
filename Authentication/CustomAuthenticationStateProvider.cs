@@ -36,14 +36,14 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider {
         return await Task.FromResult(new AuthenticationState(cachedClaimsPrincipal));
     }
 
-    public void ValidateLogin(string username, string password) {
+    public async Task ValidateLogin(string username, string password) {
         Console.WriteLine("Validating log in");
         if (string.IsNullOrEmpty(username)) throw new Exception("Enter username");
         if (string.IsNullOrEmpty(password)) throw new Exception("Enter password");
 
         ClaimsIdentity identity = new ClaimsIdentity();
         try {
-            User user = userService.ValidateUser(username, password);
+            User user = await userService.ValidateUser(username, password);
             identity = SetupClaimsForUser(user);
             string serialisedData = JsonSerializer.Serialize(user);
             jsRuntime.InvokeVoidAsync("sessionStorage.setItem", "currentUser", serialisedData);
@@ -67,9 +67,6 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider {
         List<Claim> claims = new List<Claim>();
         claims.Add(new Claim(ClaimTypes.Name, user.UserName));
         claims.Add(new Claim("Role", user.Role));
-        claims.Add(new Claim("City", user.City));
-        claims.Add(new Claim("Domain", user.Domain));
-        claims.Add(new Claim("BirthYear", user.BirthYear.ToString()));
         claims.Add(new Claim("Level", user.SecurityLevel.ToString()));
 
         ClaimsIdentity identity = new ClaimsIdentity(claims, "apiauth_type");

@@ -11,8 +11,7 @@ namespace Assingment1.Data.Services
     public class AdultService : IAdultService
     {
         private IList<Adult> adults = new List<Adult>();
-        private readonly string adultFile;
-        private string uri = "https://localhost:5001";
+        private string uri = "https://localhost:5000";
         public event Action onChange;
 
         public AdultService()
@@ -44,7 +43,7 @@ namespace Assingment1.Data.Services
             string adultAsJson = JsonSerializer.Serialize(adult);
             StringContent content = new StringContent(adultAsJson, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage responseMessage = await httpClient.PostAsync(uri + "/adult", content);
+            HttpResponseMessage responseMessage = await httpClient.PostAsync(uri + "/Adult", content);
             
             RequestCodeCheck(responseMessage);
 
@@ -63,7 +62,7 @@ namespace Assingment1.Data.Services
         public async Task RemoveAdult(Adult adult)
         {
             using HttpClient client = new HttpClient();
-                HttpResponseMessage response = await client.DeleteAsync(uri+"/adult?Id="+adult.Id);
+                HttpResponseMessage response = await client.DeleteAsync(uri+"/Adult?Id="+adult.Id);
                 if (!response.IsSuccessStatusCode)
                     throw new Exception(@"Error: {responseMessage.StatusCode}, {responseMessage.ReasonPhrase}");
         }

@@ -1,0 +1,80 @@
+﻿@page "/AddUser"
+@using Assingment1.Data.Services
+@using Assingment1.Data.Models
+<h3>AddUser</h3>
+@inject IUserService UserService
+@inject NavigationManager NavigationManager
+
+<h3>Add new User</h3>
+<p> Please fill the content to create a new user</p>
+
+<ChildContent Context="form">
+
+
+    <EditForm Model="@newUser" OnValidSubmit="@AddNewUser">
+        <DataAnnotationsValidator/>
+        <ValidationSummary/>
+
+        <div
+
+            class=
+
+            "form-group">
+            userName:<br/>
+            <InputTextArea rows="1" @bind-Value="newUser.UserName"/>
+        </div>
+        <div
+
+            class=
+
+            "form-group">
+            password:<br/>
+            <InputTextArea rows="1" @bind-Value="newUser.Password"/>
+        </div>
+        <div
+
+            class=
+
+            "form-group">
+            Role:<br/>
+            <InputTextArea rows="1" @bind-Value="newUser.Role"/>
+        </div>
+        <div
+
+            class=
+
+            "form-group">
+            Security level:<br/>
+            <InputNumber rows="1" @bind-Value="newUser.SecurityLevel"/>
+        </div>
+
+        <p
+
+            class=
+
+            "actions">
+            <button
+
+                class=
+
+                "btn btn-outline-dark" type="submit">
+                Create
+            </button>
+        </p>
+    </EditForm>
+</ChildContent>
+
+@code
+{
+    private string username;
+    private string password;
+
+    private User newUser = new User();
+
+    private async void AddNewUser()
+    {
+        await UserService.AddUser(newUser);
+
+        NavigationManager.NavigateTo("/List");
+    }
+}

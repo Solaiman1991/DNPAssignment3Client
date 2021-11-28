@@ -470,11 +470,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Solaiman\\Desktop\\3 Semester\\DNP1\\Afleveringer\\Assignment1\\Assignment1\\Assignment1.csproj",
+      "projectUniqueName": "C:\\Users\\Solaiman\\RiderProjects\\DNPAssignment1Client\\Assignment1.csproj",
       "projectName": "Assignment1",
-      "projectPath": "C:\\Users\\Solaiman\\Desktop\\3 Semester\\DNP1\\Afleveringer\\Assignment1\\Assignment1\\Assignment1.csproj",
+      "projectPath": "C:\\Users\\Solaiman\\RiderProjects\\DNPAssignment1Client\\Assignment1.csproj",
       "packagesPath": "C:\\Users\\Solaiman\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Solaiman\\Desktop\\3 Semester\\DNP1\\Afleveringer\\Assignment1\\Assignment1\\obj\\",
+      "outputPath": "C:\\Users\\Solaiman\\RiderProjects\\DNPAssignment1Client\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Solaiman\\AppData\\Roaming\\NuGet\\NuGet.Config"
